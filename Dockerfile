@@ -1,5 +1,16 @@
-FROM openjdk:17-jdk
+FROM ubuntu:latest AS build
 
-COPY C:/Register-API/target/project-0.0.1-SNAPSHOT.jar /app/app.jar
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+COPY . .
+
+RUN apt-get install maven -y
+RUN mvn clean install 
+
+FROM openjdk:17-jdk-slim
+
+EXPOSE 8080
+
+COPY --from=build target/project-0.0.1-SNAPSHOT.jar /app/app.jar
 	
 CMD ["java", "-jar", "/app/app.jar"]
