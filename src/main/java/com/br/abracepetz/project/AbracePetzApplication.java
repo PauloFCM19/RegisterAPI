@@ -3,11 +3,13 @@ package com.br.abracepetz.project;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
-public class DeployRender {
+public class AbracePetzApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DeployRender.class, args);
+		SpringApplication.run(AbracePetzApplication.class, args);
 	}
 
 }
+
